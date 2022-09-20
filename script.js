@@ -2,31 +2,32 @@ const sketchZone = document.querySelector('.sketch-zone')
 const smallBttn = document.querySelector('#small')
 const mediumBttn = document.querySelector('#medium')
 const bigBttn = document.querySelector('#big')
+const sizeInput = document.getElementById('size')
 
-function smallTable(){
-    for(let x = 0; x < 456; x++){
-     const pixel = document.createElement('div')
-     pixel.setAttribute('id', 'smallPixels')
-     sketchZone.appendChild(pixel);
-    }
-}
+let amount
 
-function mediumTable(){
-    for(let y = 0; y < 1024; y++){
-        const pixel = document.createElement('div')
-        pixel.setAttribute('id', 'mediumPixels')
-        sketchZone.appendChild(pixel);
-       }
-}
+function populateBoard(size){
+   sketchZone.style.gridTemplateColumns = `repeat(${size}, 1fr)`
+   sketchZone.style.gridTemplateRows = `repeat(${size}, 1fr)`
 
-function bigTable(){
-   for(let i = 0; i < 4596; i++){
-    const pixel = document.createElement('div')
-    pixel.setAttribute('id', 'bigPixels')
-    sketchZone.appendChild(pixel);
+   let squares = sketchZone.querySelectorAll('div')
+   squares.forEach(div => div.remove())
+   
+   amount = size * size;
+
+   for(let i = 0; i < amount; i++){
+    let square = document.createElement('div')
+    square.setAttribute('id', 'colored')
+    sketchZone.appendChild(square)
    }
 }
 
-smallBttn.addEventListener('click', smallTable);
-mediumBttn.addEventListener('click', mediumTable);
-bigBttn.addEventListener('click', bigTable);
+populateBoard(16)
+
+function changeSize(input){
+    if(input >= 2 && input <= 100){
+    populateBoard(input)
+    } else {
+        alert('The size must be between 2 and 100')
+    }
+}

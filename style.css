@@ -102,19 +102,11 @@ h1{
     border: 2px solid rgb(227, 227, 227);
 }
 
-#small:hover{
-    background: rgb(227, 227, 227);
-    border: 2px solid rgb(227, 227, 227);
-}
-
-#medium:hover{
-    background: rgb(227, 227, 227);
-    border: 2px solid rgb(227, 227, 227);
-}
-
-#big:hover{
-    background: rgb(227, 227, 227);
-    border: 2px solid rgb(227, 227, 227);
+#size{
+    width: 190px;
+    height: 30px;
+    position: absolute;
+    top: 340px;
 }
 
 .sketch-container{
@@ -136,26 +128,10 @@ h1{
     left: 10px;
     top: 10px;
     border-radius: 10px;
-    display: flex;
-    flex-wrap: wrap;
     overflow: hidden;
+    display: grid;
 }
 
-#smallPixels{
-    border: .5px solid rgba(0, 0, 0, 0.098); 
-    width: 30px;
-    height: 30px;
-}
-
-#mediumPixels{
-    border: .5px solid rgba(0, 0, 0, 0.098); 
-    width: 20px;
-    height: 20px;
-}
-
-#bigPixels{
-    border: .5px solid rgba(0, 0, 0, 0.098); 
-    width: 9px;
-    height: 9px;
-    
+#colored{
+    border: .5px solid rgba(28, 28, 28, 0.112)
 }

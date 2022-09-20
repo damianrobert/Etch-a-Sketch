@@ -15,9 +15,12 @@
       <label>Pick a color:<input type="color" id="color-picker" /></label>
       <button id="clear">Clear</button>
       <button id="erase">Erase</button>
-      <button id="small">16x16</button>
-      <button id="medium">32x32</button>
-      <button id="big">64x64</button>
+      <input
+        type="text"
+        placeholder="Type the size of the board"
+        id="size"
+        onchange="changeSize(this.value)"
+      />
     </div>
 
     <div class="sketch-container">
