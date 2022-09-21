@@ -2,9 +2,11 @@ const sketchZone = document.querySelector('.sketch-zone')
 const clear = document.getElementById('clear')
 const sizeInput = document.getElementById('size')
 const colorInput = document.getElementById('color-picker')
+const gray = document.getElementById('gray')
+const rainbow = document.getElementById('random')
 let mode = document.querySelector('.mode')
 
-let color =  colorInput.value
+let color = 'black'
 let amount
 let click = true
 
@@ -40,7 +42,11 @@ function changeSize(input){
     }
 }
 
+gray.addEventListener('click', () =>{return color = 'gray'})
+    rainbow.addEventListener('click', () =>{return color = `hsl(${Math.random() * 360}, 100%, 50%)`})
+
 function colorBoard(){
+    
     if(click){
     this.style.backgroundColor = color
     }
@@ -53,9 +59,10 @@ function clearBoard(){
 }
 
 
-document.querySelector('body').addEventListener('click', () => {
+document.querySelector('body').addEventListener('click', (e) => {
+    if(e.target.tagName != 'BUTTON'){
     click = !click
-
+    }
     if(click){
         mode.textContent = "coloring mode"
        }else{
