@@ -1,10 +1,12 @@
 const sketchZone = document.querySelector('.sketch-zone')
-const smallBttn = document.querySelector('#small')
-const mediumBttn = document.querySelector('#medium')
-const bigBttn = document.querySelector('#big')
+const clear = document.getElementById('clear')
 const sizeInput = document.getElementById('size')
+const colorInput = document.getElementById('color-picker')
+let mode = document.querySelector('.mode')
 
+let color =  colorInput.value
 let amount
+let click = true
 
 function populateBoard(size){
    sketchZone.style.gridTemplateColumns = `repeat(${size}, 1fr)`
@@ -12,6 +14,8 @@ function populateBoard(size){
 
    let squares = sketchZone.querySelectorAll('div')
    squares.forEach(div => div.remove())
+
+   
    
    amount = size * size;
 
@@ -19,7 +23,11 @@ function populateBoard(size){
     let square = document.createElement('div')
     square.setAttribute('id', 'colored')
     sketchZone.appendChild(square)
+    square.addEventListener('mouseover', colorBoard);
+    square.style.backgroundColor = 'white'
    }
+
+   
 }
 
 populateBoard(16)
@@ -31,3 +39,26 @@ function changeSize(input){
         alert('The size must be between 2 and 100')
     }
 }
+
+function colorBoard(){
+    if(click){
+    this.style.backgroundColor = color
+    }
+}
+
+function clearBoard(){
+    let sketchZone = document.querySelector('.sketch-zone')
+    let squares = sketchZone.querySelectorAll('div')
+    squares.forEach((div) => div.style.backgroundColor = 'white')
+}
+
+
+document.querySelector('body').addEventListener('click', () => {
+    click = !click
+
+    if(click){
+        mode.textContent = "coloring mode"
+       }else{
+        mode.textContent = "not coloring mode"
+       }
+})
